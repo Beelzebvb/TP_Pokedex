@@ -17,7 +17,7 @@
                 <li><a href="index.php" class="nav-link">Acceuil</a></li>
                 <li><a href="collection.php" class="nav-link">Collection</a></li>
                 <?php
-                if (isset($_SESSION['uid'])) {
+                if (isset($_SESSION['uinfos']['id'])) {
                     echo '<li><a href="add_pokemon.php" class="nav-link">Ajouter un Pokemon</a></li>';
                     echo '<li><a href="profile.php" class="nav-link">Mon Compte</a></li>';
                     echo '<li><a href="connexion.php" class="nav-link">Déconnexion</a></li>';

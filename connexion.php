@@ -19,7 +19,7 @@
                             case 'emptyinput':
                                 echo '<p class=error>Remplir tous les champs.</p>';
                                 break;
-                            case 'invalidemil':
+                            case 'invalidemail':
                                 echo '<p class=error>Renseigner une addresse email valide.</p>';
                                 break;
                             case 'wrongpassword':
@@ -46,7 +46,7 @@
                 </div>
             </form>
 
-            <form action="verif_inscription.php" method="POST">
+            <form enctype="multipart/form-data" action="verif_inscription.php" method="POST">
                 <h2>Je crée un compte</h2>
                 <div class="form-inputs">
                     <input type="text" name="pseudo" placeholder="Pseudo">
@@ -54,7 +54,7 @@
                     <input type="password" name="password" placeholder="Mot de passe">
                     <div>
                         <label for="image">Image de profil:</label>
-                        <input type="file" name="image" accept="image/gif,image/jpeg, image/jpeg,">
+                        <input type="file" name="image" accept="image/gif,image/jpeg, image/jpeg">
                     </div>
                     <button type="submit" name="submit">Inscription</button>
 
@@ -64,7 +64,7 @@
                             case 'emptyinput':
                                 echo '<p class=error>Remplir tous les champs.</p>';
                                 break;
-                            case 'invalidemil':
+                            case 'invalidemail':
                                 echo '<p class=error>Renseigner une addresse email valide.</p>';
                                 break;
                             case 'wrongpassword':
@@ -96,4 +96,4 @@
 
 </main>
 
-<? include 'includes/footer.php'; ?>
+<?php include 'includes/footer.php'; ?>

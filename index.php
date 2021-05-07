@@ -1,4 +1,4 @@
-<? include 'includes/header.php'; ?>
+<?php include 'includes/header.php'; ?>
 
 <main>
 
@@ -7,11 +7,6 @@
         <h1>BIENVENUE SUR LE POKEDEX DE L'ESGI !</h1>
     </section>
 
-    <?php
-    if (isset($_SESSION))
-        print_r($_SESSION);
-    ?>
-
 </main>
 
-<? include 'includes/footer.php'; ?>
+<?php include 'includes/footer.php'; ?>

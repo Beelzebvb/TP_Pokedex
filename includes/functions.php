@@ -1,4 +1,4 @@
-<?php session_start();
+<?php
 
 function emptyInput($inputs)
 {
@@ -57,7 +57,7 @@ function userExists($db, $uid)
     }
 }
 
-function checkPassword($db, $uid, $password)
+function validPassword($db, $uid, $password)
 {
     if (!userExists($db, $uid))
         return false;
@@ -103,7 +103,7 @@ function getUserID($db, $email)
     if (invalidEmail($email))
         return false;
 
-    $q = 'SELECT * from user where email = :email;';
+    $q = 'SELECT id from user where email = :email;';
     $req = $db->prepare($q);
     $reponse = $req->execute(
         array(
@@ -119,6 +119,44 @@ function getUserID($db, $email)
     return $email;
 }
 
+function getUserInfos($db, $email)
+{
+    if (invalidEmail($email))
+        return false;
+
+    $q = 'SELECT id, pseudo, email, image from user where email = :email;';
+    $req = $db->prepare($q);
+    $reponse = $req->execute(
+        array(
+            'email' => $email
+        )
+    );
+
+    if ($reponse) {
+        $result = $req->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    return false;
+}
+
+function getPokemons($db, $uid)
+{
+    $q = 'SELECT * FROM pokemon WHERE id_user = :id_user;';
+    $req = $db->prepare($q);
+    $reponse = $req->execute(
+        array(
+            'id_user' => $uid
+        )
+    );
+
+    if ($reponse) {
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    return false;
+}
 
 
 function createUser($db, $pseudo, $email, $password, $image)
@@ -163,16 +201,6 @@ function pokemonExists($db, $name)
 
 function addPokemon($db, $nom, $pv, $attaque, $defense, $vitesse, $image, $id_user)
 {
-    // $q = 'INSERT (nom, pv, attaque, defense, vitesse, image, id_user) INTO pokemon VALUES(
-    //     :nom,
-    //     :pv,
-    //     :attaque,
-    //     :defense,
-    //     :vitesse,
-    //     :image,
-    //     :id_user
-    // );';
-
     $q = 'INSERT INTO pokemon ( nom, pv, attaque, defense, vitesse, image, id_user) VALUES ( :nom, :pv, :attaque, :defense, :vitesse, :image, :id_user);';
 
     $req = $db->prepare($q);

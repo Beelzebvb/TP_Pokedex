@@ -21,10 +21,11 @@ if (isset($_POST['submit'])) {
         exit();
     }
 
-    if (checkPassword($db, $_POST['email'], $_POST['password'])) {
+    if (validPassword($db, $_POST['email'], $_POST['password'])) {
 
-        // session_unset();
-        $_SESSION['uid'] = getUserID($db, $_POST['email']);
+        session_unset();
+        $_SESSION['uinfos'] = getUserInfos($db, $_POST['email']);
+        $_SESSION['pokemons'] = getPokemons($db, $_SESSION['uinfos']['id']);
 
         header('location: index.php?message=userconnected&connexionMessage');
         exit();

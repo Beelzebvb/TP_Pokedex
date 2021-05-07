@@ -9,6 +9,10 @@
 
 body {
   font-family: "Lato", sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 100vw;
 }
 
 header {
@@ -27,6 +31,10 @@ main {
   margin: auto;
 }
 
+section {
+  width: 100vw;
+}
+
 main h1 {
   font-size: 45px;
   text-align: center;
@@ -34,13 +42,12 @@ main h1 {
 }
 
 footer {
+  justify-self: flex-end;
   background-color: #aaa;
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  bottom: 0;
   width: 100%;
   height: 40px;
 }
@@ -124,6 +131,49 @@ footer {
 }
 .form-inputs button:active {
   background-color: #81be3b;
+}
+
+/** Collection **/
+
+.collection h1 {
+  margin: 5rem auto;
+}
+
+.row {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.card {
+  width: 33%;
+  margin: 3rem 1rem;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.card h3 {
+  line-height: 5rem;
+}
+
+.card img {
+  height: 200px;
+}
+
+/** Profile **/
+
+.profile h1 {
+  margin: 5rem auto;
+}
+
+.pfp {
+  display: flex;
+  margin: 1rem 0rem;
+}
+
+.pfp img {
+  height: 200px;
 }
 
 /** add_pokemon **/
