@@ -1,4 +1,8 @@
 <?php session_start();
 
-include 'config.php';
-include 'functions.php';
+if (isset($_SESSION['uinfos'])) {
+    session_unset();
+}
+
+header('location: ../connexion.php');
+exit();

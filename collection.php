@@ -7,58 +7,28 @@
 
         <div class="row">
 
-            <div class="card">
-                <div class="description">
-                    <h3>Bulbasaur</h3>
-                    <p>PV: 100</p>
-                    <p>Attaque: 100</p>
-                    <p>Defense: 100</p>
-                    <p>Vitesse: 90</p>
-                </div>
-                <img src="https://img.pokemondb.net/artwork/large/bulbasaur.jpg" alt="pokemon">
-            </div>
+            <?php
 
-            <div class="card">
-                <div class="description">
-                    <h3>Darkrai</h3>
-                    <p>PV: 100</p>
-                    <p>Attaque: 100</p>
-                    <p>Defense: 100</p>
-                    <p>Vitesse: 90</p>
-                </div>
-                <img src="https://img.pokemondb.net/artwork/large/darkrai.jpg" alt="pokemon">
-            </div>
+            if (isset($_SESSION['allpokemons'])) {
 
-            <div class="card">
-                <div class="description">
-                    <h3>Pikachu</h3>
-                    <p>PV: 100</p>
-                    <p>Attaque: 100</p>
-                    <p>Defense: 100</p>
-                    <p>Vitesse: 90</p>
-                </div>
-                <img src="https://img.pokemondb.net/artwork/large/pikachu.jpg" alt="pokemon">
-            </div>
-            <div class="card">
-                <div class="description">
-                    <h3>Dialga</h3>
-                    <p>PV: 100</p>
-                    <p>Attaque: 100</p>
-                    <p>Defense: 100</p>
-                    <p>Vitesse: 90</p>
-                </div>
-                <img src="https://img.pokemondb.net/artwork/large/dialga.jpg" alt="pokemon">
-            </div>
-            <div class="card">
-                <div class="description">
-                    <h3>Palkia</h3>
-                    <p>PV: 100</p>
-                    <p>Attaque: 100</p>
-                    <p>Defense: 100</p>
-                    <p>Vitesse: 90</p>
-                </div>
-                <img src="https://img.pokemondb.net/artwork/large/palkia.jpg" alt="pokemon">
-            </div>
+                foreach ($_SESSION['allpokemons'] as $pokemon) {
+
+                    echo "
+                    <div class='card'>
+                        <div class='description'>
+                            <h3>{$pokemon["nom"]}</h3>
+                            <p>PV: {$pokemon["pv"]}</p>
+                            <p>Attaque: {$pokemon["attaque"]}</p>
+                            <p>Defense: {$pokemon["defense"]}</p>
+                            <p>Vitesse: {$pokemon["vitesse"]}</p>
+                        </div>
+                        <img src='uploads/pokemons/{$pokemon['image']}' alt='pokemon'>
+                    </div>";
+                }
+            } else {
+                echo '<h2 class="valid">Connectez vous pour commencer à ajouter des pokemons à votre collection !!</p>';
+            }
+            ?>
 
         </div>
 

@@ -7,6 +7,7 @@
         <h1>BIENVENUE SUR LE POKEDEX DE L'ESGI !</h1>
     </section>
 
+
 </main>
 
 <?php include 'includes/footer.php'; ?>

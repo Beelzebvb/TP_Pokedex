@@ -23,7 +23,7 @@ include 'includes/header.php';
             <div class="row">
                 <?php
 
-                foreach ($_SESSION['pokemons'] as $pokemon) {
+                foreach ($_SESSION['uidpokemons'] as $pokemon) {
 
                     echo "
                     <div class='card'>
@@ -34,7 +34,7 @@ include 'includes/header.php';
                             <p>Defense: {$pokemon["defense"]}</p>
                             <p>Vitesse: {$pokemon["vitesse"]}</p>
                         </div>
-                        <img src='uploads/{$_SESSION['uinfos']['pseudo']}/pokemon/{$pokemon['image']}' alt='pokemon'>
+                        <img src='uploads/pokemons/{$pokemon['image']}' alt='pokemon'>
                     </div>";
                 }
 

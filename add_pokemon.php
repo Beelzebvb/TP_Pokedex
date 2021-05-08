@@ -12,7 +12,7 @@
             <input type="text" name="defense" placeholder="Defense">
             <input type="text" name="vitesse" placeholder="Vitesse">
             <div>
-                <label for="image">Image de profil:</label>
+                <label for="image">Image du pokemon:</label>
                 <input type="file" name="image" accept="image/gif,image/jpeg, image/jpeg,">
             </div>
             <button type="submit" name="submit">Ajouter</button>

@@ -158,6 +158,20 @@ function getPokemons($db, $uid)
     return false;
 }
 
+function getAllPokemons($db)
+{
+
+    $q = 'SELECT * FROM pokemon;';
+    $req = $db->prepare($q);
+    $reponse = $req->execute();
+
+    if ($reponse) {
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    return false;
+}
 
 function createUser($db, $pseudo, $email, $password, $image)
 {

@@ -25,7 +25,8 @@ if (isset($_POST['submit'])) {
 
         session_unset();
         $_SESSION['uinfos'] = getUserInfos($db, $_POST['email']);
-        $_SESSION['pokemons'] = getPokemons($db, $_SESSION['uinfos']['id']);
+        $_SESSION['uidpokemons'] = getPokemons($db, $_SESSION['uinfos']['id']);
+        $_SESSION['allpokemons'] = getAllPokemons($db);
 
         header('location: index.php?message=userconnected&connexionMessage');
         exit();

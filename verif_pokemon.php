@@ -61,7 +61,7 @@ if ($_FILES['image']['error'] !== 0) {
         exit();
     }
 
-    $filePath = 'uploads/' . $_SESSION['uinfos']['pseudo'] . '/' . 'pokemon';
+    $filePath = 'uploads/pokemons';
     if (!file_exists($filePath)) {
         mkdir($filePath, 0777);
     }
@@ -73,6 +73,7 @@ if ($_FILES['image']['error'] !== 0) {
     $fileName = 'image-' . base64_encode($_POST['nom']) . '.' . $extension;
 
     $dest = $filePath . '/' . $fileName;
+
 
     if (!move_uploaded_file($_FILES['image']['tmp_name'], $dest)) {
         header("location: connexion.php?message=movefilefailure");
@@ -91,11 +92,25 @@ if (addPokemon(
     $_SESSION['uinfos']['id']
 )) {
 
-    $_SESSION['pokemons'] = getPokemons($db, $_SESSION['uinfos']['id']);
+    $_SESSION['uidpokemons'] = getPokemons($db, $_SESSION['uinfos']['id']);
+    $_SESSION['allpokemons'] = getAllPokemons($db);
 
     header('location: add_pokemon.php?message=pokemonaddsuccess');
     exit();
 } else {
     header('location: add_pokemon.php?message=pokemonaddfailure');
     exit();
+}
+
+
+$user = "myteam";
+$password = "myteam";
+$database = "pokedex";
+
+try {
+    $db = new PDO("mysql:host=localhost;dbname=$database", $user, $password);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    print "Error!: " . $e->getMessage() . "<br/>";
+    die();
 }

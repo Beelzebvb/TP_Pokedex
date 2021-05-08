@@ -31,7 +31,7 @@
                             case 'userexists':
                                 echo '<p class=error>Ces identifiants ont déjà été pris par un autre utilisateur.</p>';
                                 break;
-                            case 'userdoesnotexists':
+                            case 'userdoesnotexist':
                                 echo '<p class=error>Ces identifiants ne correspondent à aucun compte utilisateur.</p>';
                                 break;
                             case 'usercreated':
